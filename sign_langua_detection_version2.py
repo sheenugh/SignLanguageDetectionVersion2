@@ -33,12 +33,22 @@ while True :
         
         if aspect_ratio > 1:
             size_of_image = img_size / height
-            weight_cal = math.ceil(size_of_image*width)
-            img_resize = cv2.resize(img_crop, (weight_cal, img_size))
+            width_cal = math.ceil(size_of_image*width)
+            img_resize = cv2.resize(img_crop, (width_cal, img_size))
             img_resize_shape = img_resize.shape
             
-            width_gap = math.ceil ((img_size-weight_cal)/2)
-            img_white[: ,width_gap: weight_cal + width_gap]
+            width_gap = math.ceil ((img_size-width_cal)/2)
+            img_white[: ,width_gap: width_cal + width_gap]
+            
+        else:
+            size_of_image = img_size / width
+            height_cal = math.ceil(size_of_image*height)
+            img_resize = cv2.resize(img_crop, (img_size, height_cal))
+            img_resize_shape = img_resize.shape
+            
+            height_gap = math.ceil ((img_size-height_cal)/2)
+            img_white[height_gap: height_cal + height_gap, : ] = img_resize
+            
             
             
         
