@@ -35,5 +35,7 @@ while True :
             size_of_image = img_size / height
             weight_cal = math.ceil(size_of_image*weight)
             img_resize = cv2.resize(img_crop, (weight_cal, img_size))
+            img_resize_shape = img_resize.shape
+            
             
         
