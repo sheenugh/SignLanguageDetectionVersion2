@@ -48,6 +48,11 @@ while True :
             
             height_gap = math.ceil ((img_size-height_cal)/2)
             img_white[height_gap: height_cal + height_gap, : ] = img_resize
+        
+        cv2.image_show('ImageCrop', img_crop)
+        cv2.image_show('ImageWhite', img_white)
+        
+        
             
             
             
