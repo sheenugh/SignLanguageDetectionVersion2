@@ -11,7 +11,7 @@ import mediapipe as mp
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=2)
 offset = 20
-img_size = 200
+img_size = 300
 counter = 0
 
 folder = "SignLanguageDetectionVersion2\Data\Hello"
@@ -31,27 +31,34 @@ while True :
         img_crop_shape = img_crop.shape
         
         aspect_ratio = height/width
-        
+        if img_crop.size > 0:  # Check if img_crop is not empty
+            img_resize = cv2.resize(img_crop, (width_cal, img_size))
+            img_resize_shape = img_resize.shape
+            
         if aspect_ratio > 1:
             size_of_image = img_size / height
             width_cal = math.ceil(size_of_image*width)
             img_resize = cv2.resize(img_crop, (width_cal, img_size))
             img_resize_shape = img_resize.shape
-            
-            width_gap = math.ceil ((img_size-width_cal)/2)
-            img_white[: ,width_gap: width_cal + width_gap] = img_resize
-            
+            width_gap = math.ceil ((img_size - width_cal)/2)
+            img_white[width_cal: ,width_gap : width_cal + width_gap] = img_resize_shape
+        
         else:
             size_of_image = img_size / width
             height_cal = math.ceil(size_of_image*height)
-            img_resize = cv2.resize(img_crop, (img_size, height_cal))
-            img_resize_shape = img_resize.shape
-            
+            img_resize = cv2.resize(img_crop , (img_size, height_cal))
             height_gap = math.ceil ((img_size-height_cal)/2)
+            img_resize_shape = img_resize.shape
             img_white[height_gap : height_cal + height_gap, : ] = img_resize
-        
-        cv2.imshow('ImageCrop', img_crop)
-        cv2.imshow('ImageWhite', img_white)
+        # if img_crop is not None and img_crop.size > 0:
+        #     print("ImageCrop shape:", img_crop.shape)
+        #     cv2.imshow('ImageCrop', img_crop)
+        #     cv2.waitKey(0)
+        #     cv2.destroyAllWindows()
+        # else:
+        #     print("Error: Image crop is empty.")
+            
+
         
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)

@@ -9,7 +9,7 @@ import mediapipe as mp
 
 # ========= VIDEO CAPTURE ========
 cap = cv2.VideoCapture(0)
-detector = HandDetector(maxHands=2)
+detector = HandDetector(maxHands=1)
 offset = 20
 img_size = 200
 counter = 0
@@ -38,13 +38,13 @@ while True :
             img_resize = cv2.resize(img_crop, (width_cal, img_size))
             img_resize_shape = img_resize.shape
             
-            width_gap = math.ceil ((img_size-width_cal)/2)
-            img_white[: ,width_gap: width_cal + width_gap] = img_resize
+            width_gap = math.ceil ((img_size - width_cal)/2)
+            img_white[: ,width_gap : width_cal + width_gap] = img_resize
             
         else:
             size_of_image = img_size / width
             height_cal = math.ceil(size_of_image*height)
-            img_resize = cv2.resize(img_crop, (img_size, height_cal))
+            img_resize = cv2.resize(img_crop , (img_size, height_cal))
             img_resize_shape = img_resize.shape
             
             height_gap = math.ceil ((img_size-height_cal)/2)
