@@ -52,6 +52,13 @@ while True :
         cv2.image_show('ImageCrop', img_crop)
         cv2.image_show('ImageWhite', img_white)
         
+    cv2.imshow("Image", img)
+    key = cv2.waitKey(1)
+    if key == ord('s') :
+        counter += 1
+        cv2.imwrite(f'{folder}/Image_{time.time()}.jpg', img_white)
+        print(counter)
+        
         
             
             
