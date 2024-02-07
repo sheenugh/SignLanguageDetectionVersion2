@@ -24,5 +24,8 @@ while True :
         hand = hands [0]
         x,y,w,h = hand ['bbox']
         
+        img_white = np.ones((img_size, img_size, 3), np.uint8)* 255
         
+        img_crop = img[y-offset : y + h + offset, x-offset : x + w + offset]
+        img_crop_shape = img_crop.shape
         
