@@ -15,7 +15,7 @@ offset = 20
 img_size = 200
 counter = 0
 
-folder = "Data\I Love You"
+folder = "Data\Goodbye"
 
 # ========= ACTUAL CODES ==========
 # - Calling for data collection
