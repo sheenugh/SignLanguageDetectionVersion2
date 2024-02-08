@@ -15,7 +15,7 @@ offset = 20
 img_size = 200
 counter = 0
 
-folder = "Data\Letters\Letter A"   
+folder = "SignLanguageDetectionVersion2\Data\Letters\Letter B"   
 
 # ========= ACTUAL CODES ==========
 # - Calling for data collection
