@@ -7,6 +7,7 @@ import math
 import numpy as np
 import mediapipe as mp
 
+
 # ========= VIDEO CAPTURE ========
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=2)
@@ -14,7 +15,7 @@ offset = 20
 img_size = 200
 counter = 0
 
-folder = "SignLanguageDetectionVersion2\Data\Hello"
+folder = "Data\I Love You"
 
 # ========= ACTUAL CODES ==========
 # - Calling for data collection
