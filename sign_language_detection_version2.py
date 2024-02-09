@@ -2,6 +2,7 @@
 # ========= IMPORTS ==========
 import cv2
 from cvzone.HandTrackingModule import HandDetector
+from cvzone.ClassificationModule import Classifier
 import time
 import math
 import numpy as np
@@ -11,16 +12,18 @@ import mediapipe as mp
 # ========= VIDEO CAPTURE ========
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=2)
+classifier = Classifier("a-z\keras_model.h5" , "a-z\labels.txt")
 offset = 20
-img_size = 200
+img_size = 300
 counter = 0
 
-folder = r"Data\Few Sign Language Words\Sorry"
+labels = []
 
 # ========= ACTUAL CODES ==========
-# - Calling for data collection
+# - For Data Collection of the Sign Languages Words and/or Letters
 while True :
     success, img = cap.read ()
+    img_output = img.copy()
     hands , img = detector.findHands(img)
     if hands:
         hand = hands [0]
@@ -40,7 +43,10 @@ while True :
             img_resize_shape = img_resize.shape
             
             width_gap = math.ceil ((img_size-width_cal)/2)
-            img_white[: ,width_gap: width_cal + width_gap] = img_resize
+            img_white[:, width_gap: width_cal + width_gap] = img_resize
+            
+            prediction , index = classifier.getPrediction(imgWhite, draw= False)
+            print(prediction, index)
             
         else:
             size_of_image = img_size / width
