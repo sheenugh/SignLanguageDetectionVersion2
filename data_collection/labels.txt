@@ -1,0 +1,9 @@
+0 Hello
+1 I love you
+2 Mother 
+3 No
+4 Okay
+5 Please
+6 Sorry
+7 Thank You
+8 Yes
