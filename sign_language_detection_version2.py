@@ -15,7 +15,7 @@ offset = 20
 img_size = 200
 counter = 0
 
-folder = r"Data\Few Sign Language Words\Yes"   
+folder = r"Data\Few Sign Language Words\Sorry"
 
 # ========= ACTUAL CODES ==========
 # - Calling for data collection
