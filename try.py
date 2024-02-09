@@ -31,9 +31,6 @@ while True :
         img_crop_shape = img_crop.shape
         
         aspect_ratio = height/width
-        if img_crop.size > 0:  # Check if img_crop is not empty
-            img_resize = cv2.resize(img_crop, (width_cal, img_size))
-            img_resize_shape = img_resize.shape
             
         if aspect_ratio > 1:
             size_of_image = img_size / height
@@ -50,15 +47,7 @@ while True :
             height_gap = math.ceil ((img_size-height_cal)/2)
             img_resize_shape = img_resize.shape
             img_white[height_gap : height_cal + height_gap, : ] = img_resize
-        # if img_crop is not None and img_crop.size > 0:
-        #     print("ImageCrop shape:", img_crop.shape)
-        #     cv2.imshow('ImageCrop', img_crop)
-        #     cv2.waitKey(0)
-        #     cv2.destroyAllWindows()
-        # else:
-        #     print("Error: Image crop is empty.")
             
-
         
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)

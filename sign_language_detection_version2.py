@@ -58,6 +58,12 @@ while True :
             img_white[height_gap : height_cal + height_gap, : ] = img_resize
             prediction , index = classifier.getPrediction(imgWhite, draw= False)
         
+        
+        cv2.rectangle(img_output,(horizontal_axis-offset, vertical_axis-offset-70),(horizontal_axis-offset+400, vertical_axis- offset+60-50),(0,255,0),cv2.FILLED)  
+
+        cv2.putText(img_output,labels[index],(horizontal_axis,vertical_axis-30),cv2.FONT_HERSHEY_COMPLEX,2,(0,0,0),2) 
+        cv2.rectangle(img_output,(horizontal_axis-offset,vertical_axis-offset),(horizontal_axis + width + offset, vertical_axis+height + offset),(0,255,0),4)   
+
         cv2.imshow('ImageCrop', img_crop)
         cv2.imshow('ImageWhite', img_white)
         
