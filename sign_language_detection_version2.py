@@ -12,7 +12,7 @@ import mediapipe as mp
 # ========= VIDEO CAPTURE ========
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=2)
-classifier = Classifier("a-z\keras_model.h5" , "a-z\labels.txt")
+classifier = Classifier("model_and_label\keras_model.h5" , "model_and_label\labels.txt")
 offset = 20
 img_size = 300
 counter = 0
@@ -45,7 +45,7 @@ while True :
             width_gap = math.ceil ((img_size-width_cal)/2)
             img_white[:, width_gap: width_cal + width_gap] = img_resize
             
-            prediction , index = classifier.getPrediction(imgWhite, draw= False)
+            prediction , index = classifier.getPrediction(img_white, draw= False)
             print(prediction, index)
             
         else:
