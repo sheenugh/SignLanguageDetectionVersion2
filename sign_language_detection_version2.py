@@ -56,6 +56,7 @@ while True :
             
             height_gap = math.ceil ((img_size-height_cal)/2)
             img_white[height_gap : height_cal + height_gap, : ] = img_resize
+            prediction , index = classifier.getPrediction(imgWhite, draw= False)
         
         cv2.imshow('ImageCrop', img_crop)
         cv2.imshow('ImageWhite', img_white)
